@@ -1,2 +1,2 @@
-# Camp with Care
-## Camp with Care is camping website project.
+# Camp With Care
+## Camp With Care is camping website project.
