@@ -10,7 +10,7 @@ const LocalStrategy = require('passport-local');
 const ExpressError = require('./utils/ExpressError');
 const campgroundRoutes = require('./routes/campgrounds');
 const reviewRoutes = require('./routes/reviews');
-const userRoutes = require('./routes/user');
+const userRoutes = require('./routes/users');
 const User = require('./models/user');
 
 mongoose.connect('mongodb://localhost:27017/CampWithCare',{
