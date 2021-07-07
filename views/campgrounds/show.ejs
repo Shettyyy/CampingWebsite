@@ -4,11 +4,16 @@
     <div class="col-6">
         <div id="campgroundCarousel" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
-                <% campground.images.forEach((img,i) => { %> 
-                    <div class="carousel-item <%= i == 0 ? 'active' : '' %>">
-                        <img src="<%= img.url %>" class="card-img-top" alt="">
+                <% if(campground.images.length) {
+                    campground.images.forEach((img,i) => { %> 
+                        <div class="carousel-item <%= i == 0 ? 'active' : '' %>">
+                            <img src="<%= img.url %>" class="card-img-top" alt="">
+                        </div>
+                <% }) }else { %> 
+                    <div class="carousel-item active">
+                        <img src="https://res.cloudinary.com/dilsqlwhn/image/upload/v1625579101/CampWithCare/vzyiik3vpo5azyt3rohg.jpg" class="card-img-top" alt="">
                     </div>
-                <% }) %> 
+                <% } %>
             </div>
             <% if(campground.images.length > 1) { %> 
                 <button class="carousel-control-prev" type="button" data-bs-target="#campgroundCarousel" data-bs-slide="prev">
@@ -42,6 +47,7 @@
         </div>  
     </div>
     <div class="col-6">
+        <div class="mb-3" id='map' style='width: 100%; height: 300px;'></div>
         <% if(currentUser) { %> 
             <h2>Leave a Review</h2>
             <form action="/campgrounds/<%= campground._id %>/reviews" method="POST" class="mb-3 validated-form" novalidate>
@@ -88,3 +94,9 @@
         <% } %>
     </div>
 </div>
+
+<script>
+    const mapToken = '<%-process.env.MAPBOX_TOKEN%>';
+    const campground = <%-JSON.stringify(campground)%>;
+</script>
+<script src="/js/showPageMap.js"></script>
